@@ -1,7 +1,7 @@
 'use client';
 
 import { PROBLEMSDATA } from "@/utils/constants/tmp"
-import { SortBy, SortOrder } from "@/utils/enums/question";
+import { Difficulty, SortBy, SortOrder } from "@/utils/enums/question";
 import { useFetch, UseFetchOptions } from "@/utils/hooks/fetch/useFetch"
 import { GetQuestions, GetQuestionsError, QuestionFilters, QuestionPageNSort } from "@/utils/models/question"
 import { AdminQuestions } from "@/utils/requests/questions"
@@ -35,6 +35,17 @@ const Page = () => {
 
     const {data, loading, error} = useFetch<GetQuestions, GetQuestionsError>(fetchOptions)
     
+    function renderDifficultyData(d : Difficulty) {
+        switch(d) {
+            case Difficulty.EASY:
+                return <p className="text-easy">Easy</p>
+            case Difficulty.MEDIUM:
+                return <p className="text-medium">Medium</p>
+            case Difficulty.HARD:
+                return <p className="text-hard">Hard</p>
+        }
+    }
+
     return (
         <main className="pt-16 bg-white w-screen h-max min-h-screen">
             <section className='justify-center flex w-full h-max pt-8 px-5 gap-x-2'>
@@ -66,14 +77,14 @@ const Page = () => {
                             <tbody>
                                 {
                                     data.content.map(p => (
-                                        <tr key={p.questionId} className="w-full h-12">
-                                            <td className="text-sm font-popm text-black text-right pr-4">{p.questionId+'.'}</td>
-                                            <td className="text-base font-popm text-black">{p.title}</td>
+                                        <tr key={p.questionId} className="w-full h-12 border-b border-major/30 py-1">
+                                            <td className="text-sm font-popm text-black text-left">{p.questionId+'.'}</td>
+                                            <td className="w-1/3 text-base font-popm text-black">{p.title}</td>
                                             <td><div className="h-6 w-6 bg-slate-300"/></td>
-                                            <td>
-                                                <div className="flex content-center gap-x-1">
+                                            <td className="w-1/3">
+                                                <div className="flex max-h-11 overflow-y-auto flex-wrap content-center gap-1">
                                                 {
-                                                    p.tagList.map(t => (
+                                                    p.tagList.slice(0,3).map(t => (
                                                         <div
                                                             key={t.tagId}
                                                             className="h-5 bg-major/20 px-3 max-w-[50%] space-x-1 rounded-full text-[13px] font-popm text-black capitalize"
@@ -84,9 +95,15 @@ const Page = () => {
                                                         </div>
                                                     ))
                                                 }
+                                                {
+                                                    p.tagList.length > 3 &&
+                                                    <div className="h-5 bg-major/20 px-3 max-w-[50%] space-x-1 rounded-full text-[13px] font-popm text-black ">{p.tagList.length - 3} more</div>
+                                                }
                                                 </div>
                                             </td>
-                                            <td className="text-[#03AC13] text-xs font-popm ">{p.difficulty}</td>
+                                            <td className="text-[#03AC13] text-sm font-popsb ">
+                                                {renderDifficultyData(Difficulty[p.difficulty])}
+                                            </td>
                                         </tr>
                                     ))
                                 }

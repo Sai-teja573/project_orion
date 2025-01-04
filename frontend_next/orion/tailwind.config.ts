@@ -10,7 +10,10 @@ export default {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
-        major: "#FC6A03"
+        major: "#FC6A03",
+        easy: "#03AC13",
+        medium: "#FCAE1E",
+        hard: "#D0312D"
       },
       fontFamily : {
         popl : "Poppins-Light",

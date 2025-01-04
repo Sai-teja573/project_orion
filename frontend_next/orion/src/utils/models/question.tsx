@@ -22,7 +22,7 @@ export type Question = {
     title : string,
     description : string,
     subject : string,
-    difficulty : string,
+    difficulty : Difficulty,
     status : string,
     author : string,
     options : Option[],

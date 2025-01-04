@@ -7,7 +7,7 @@ export function AdminQuestions() {
     const {get, post, put, remove} = useRequest()
 
     async function createQuestion(body : Question) : Promise<AxiosResponse<Question>>{
-        return await post('api/admin/questions', body)
+        return await post('admin/questions', body)
     }
 
     async function updateQuestion(questionId: Id, body : Question) : Promise<AxiosResponse<Question>>{
@@ -19,7 +19,7 @@ export function AdminQuestions() {
     }
 
     async function getQuestions(params : QuestionPageNSort, filters : QuestionFilters) : Promise<AxiosResponse<GetQuestions>>{
-        return await post('public/questions', filters, { params : params })
+        return await post('public/question/search', filters, { params : params })
     }
 
     async function getQuestionById(questionId : Id) : Promise<AxiosResponse<Question>>{
