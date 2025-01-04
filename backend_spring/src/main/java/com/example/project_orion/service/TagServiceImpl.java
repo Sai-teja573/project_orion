@@ -60,7 +60,7 @@ public class TagServiceImpl implements TagService{
         // Remove the tag from all associated questions
         for (Question question : savedTag.getQuestions()) {
             question.getTagList().remove(savedTag);
-            questionRepository.save(question); // Save updated question
+            questionRepository.save(question);
         }
 
         tagRepository.delete(savedTag);

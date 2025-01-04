@@ -190,9 +190,15 @@ public class QuestionServiceImpl implements QuestionService{
 
     @Override
     public QuestionResponse fetchAllQuestions(Filter filter, Integer pageNumber, Integer pageSize, String sortBy, String sortOrder) {
+
+        if(filter.isEmpty()){
+            return getAllQuestions(pageNumber, pageSize, sortBy, sortOrder);
+        }
+
         String subjectValue = (filter.getSubject() != null) ? filter.getSubject().toString() : null;
         String difficultyValue = (filter.getDifficulty() != null) ? filter.getDifficulty().toString() : null;
         Integer tagCount = (filter.getTagList() != null) ? filter.getTagList().size() : null;
+
         List<Question> questionList;
         if(filter.getTagList() == null){
             questionList = questionRepository.findQuestions(filter.getTitle(), subjectValue, difficultyValue);

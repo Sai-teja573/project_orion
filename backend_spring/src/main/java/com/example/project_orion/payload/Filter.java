@@ -22,4 +22,8 @@ public class Filter {
     private String title;
 
     List<Long> tagList;
+
+    public boolean isEmpty(){
+        return subject == null && difficulty == null && title == null && tagList == null;
+    }
 }

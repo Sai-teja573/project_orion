@@ -28,6 +28,4 @@ public class AnswerController {
         ValidationResponse validationResponse = answerService.validateAnswer(submission);
         return new ResponseEntity<>(validationResponse, HttpStatus.OK);
     }
-
-
 }
