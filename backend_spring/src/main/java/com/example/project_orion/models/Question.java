@@ -65,7 +65,7 @@ public class Question {
     private Subject subject;
 
     @NotNull(message = "Difficulty must not be null")
-    @Enumerated(EnumType.STRING)
+    @Enumerated(EnumType.ORDINAL)
     private Difficulty difficulty;
 
     @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL, targetEntity = Answer.class)
