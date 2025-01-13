@@ -47,4 +47,3 @@ def test_delete_question():
     q_id = create_question()
     delete_question_response = rq.delete(endpoint + f"/api/admin/question/{q_id}")
     assert delete_question_response.status_code == 200
-    # hii  
