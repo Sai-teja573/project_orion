@@ -1,49 +1,12 @@
 import requests as rq
 import random
+import config
+import utils
 
-endpoint = "http://localhost:8080"
-
-def create_question():
-    # For creating a question dynamically
-    random_num = random.random()
-    payload = {
-        "title": f"Who is panda{random_num}",
-        "description": "Choose the correct answer.",
-        "subject": "CHEMISTRY",
-        "difficulty": "MEDIUM",
-        "status": "ACTIVE",
-        "author": "Kushidhar",
-        "options": [
-            {
-                "text": "1"
-            },
-            {
-                "text": "2"
-            },
-            {
-                "text": "3"
-            },
-            {
-                "text": "4"
-            }
-        ],
-        "tagList": [
-            {
-                "text": "human"
-            },
-            {
-                "text": "jio"
-            }
-        ],
-        "correctOptionId": 1
-    }
-    create_question_response = rq.post(endpoint + "/api/admin/questions", json =payload)
-    assert create_question_response.status_code == 201
-    question_data = create_question_response.json()
-    question_id = question_data["questionId"]
-    return question_id
+# Data is fetched from the endpoint.
+endpoint =  config.endpoint
 
 def test_get_question():
-    q_id = create_question()
-    get_question_response = rq.get(endpoint + f"/api/public/question/{q_id}")
+    q_id = utils.create_question_id()
+    get_question_response = rq.get(config.get_question_url + f"/{q_id}")
     assert get_question_response.status_code == 200
