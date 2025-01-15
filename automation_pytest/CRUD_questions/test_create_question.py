@@ -2,6 +2,7 @@ import requests as rq
 import random
 import config
 import utils
+import faker
 
 # Data is fetched from the endpoint.
 endpoint =  config.endpoint

@@ -1,10 +1,13 @@
 import requests as rq
 import random
 import config
+import faker
+
 def generate_payload():
-    random_num = random.random()
+    
+    random_text = faker.Faker().sentence()
     payload ={
-        "title": f"Who is panda{random_num}",
+        "title": f"{random_text}",
         "description": "Choose the correct answer.",
         "subject": "CHEMISTRY",
         "difficulty": "MEDIUM",
