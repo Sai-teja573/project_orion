@@ -3,7 +3,7 @@ import pytest
 def run_selected_pytest_files():
     # List the specific test files you want to run
     test_files = [
-        "test_get_question.py",
+        "test_create_question.py",
         "test_create_question.py",
         "test_delete_question.py",
         "test_update_question.py"
