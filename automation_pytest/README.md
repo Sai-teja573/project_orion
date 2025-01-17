@@ -23,3 +23,19 @@ To make sure the `configs` module is always available, you can set the `PYTHONPA
 ---
 
 ```pip freeze > requirements.txt```
+
+
+---
+
+```text
+VIRTUAL ENV SETUP
+python3 -m venv venv  
+     
+source venv/bin/activate 
+
+pip3 install -r requirements.txt 
+
+pytest tests_question_api
+
+deactivate
+```
