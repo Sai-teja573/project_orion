@@ -1,7 +1,7 @@
 import requests as rq
 import random
-import project_orion.automation_pytest.Configs.config as config
-import project_orion.automation_pytest.Utils.question_utils as question_utils
+import configs.config as config
+import utils.question_utils as question_utils
 import faker
 
 

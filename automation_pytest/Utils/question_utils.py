@@ -1,6 +1,6 @@
 import requests as rq
 import random
-import project_orion.automation_pytest.Configs.config as config
+import configs.config as config
 # import faker
 
 def generate_payload():
