@@ -1,5 +1,7 @@
 """
+author :: siva shankar
 @doc: all the end points will be fetched from here
+
 """
 ENDPOINT = "http://localhost:8080"
 
