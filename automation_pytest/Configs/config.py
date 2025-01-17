@@ -1,3 +1,6 @@
+"""
+@doc: all the end points will be fetched from here
+"""
 ENDPOINT = "http://localhost:8080"
 
 CREATE_QUESTION_URL = ENDPOINT + "/api/admin/questions"
