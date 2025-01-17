@@ -2,7 +2,7 @@
 import pytest
 import requests as rq
 import configs.config as config
-import utils.question_utils1 as question_utils
+import utils.filter_question_utils as question_utils
 
 @pytest.fixture
 def search_payload():
